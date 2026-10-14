@@ -1,0 +1,9 @@
+metric,value,unit,formula,scope
+internet_subscriber_growth_mar_to_jun_2026,1.96,percent,(June subscribers - March subscribers) / March subscribers * 100,TRAI quarterly performance indicators series
+internet_subscriber_change_mar_to_jun_2026,21.38,million,June subscribers - March subscribers,TRAI quarterly performance indicators series
+broadband_subscriber_growth_mar_to_jun_2026,2.03,percent,(June subscribers - March subscribers) / March subscribers * 100,TRAI quarterly performance indicators series
+broadband_subscriber_change_mar_to_jun_2026,21.62,million,June subscribers - March subscribers,TRAI quarterly performance indicators series
+urban_rural_internet_subscriber_density_gap_jun_2026,79.96,subscriptions_per_100_population,Urban subscriptions per 100 - rural subscriptions per 100,"Density of subscriptions, not unique people"
+urban_to_rural_internet_subscriber_density_ratio_jun_2026,2.63,ratio,Urban subscriptions per 100 / rural subscriptions per 100,Density ratio; not an individual-level access ratio
+rural_share_of_5g_fwa_aug_2026,51.9,percent,Rural 5G FWA subscriptions / total 5G FWA subscriptions * 100,TRAI monthly subscription series
+jio_share_of_broadband_subscriptions_aug_2026,48.86,percent,Jio wired and wireless broadband subscriptions / total broadband subscriptions with M2M * 100,Cross-checks the TRAI reported share; denominator includes M2M

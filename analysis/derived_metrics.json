@@ -1,0 +1,58 @@
+[
+  {
+    "metric": "internet_subscriber_growth_mar_to_jun_2026",
+    "value": 1.96,
+    "unit": "percent",
+    "formula": "(June subscribers - March subscribers) / March subscribers * 100",
+    "scope": "TRAI quarterly performance indicators series"
+  },
+  {
+    "metric": "internet_subscriber_change_mar_to_jun_2026",
+    "value": 21.38,
+    "unit": "million",
+    "formula": "June subscribers - March subscribers",
+    "scope": "TRAI quarterly performance indicators series"
+  },
+  {
+    "metric": "broadband_subscriber_growth_mar_to_jun_2026",
+    "value": 2.03,
+    "unit": "percent",
+    "formula": "(June subscribers - March subscribers) / March subscribers * 100",
+    "scope": "TRAI quarterly performance indicators series"
+  },
+  {
+    "metric": "broadband_subscriber_change_mar_to_jun_2026",
+    "value": 21.62,
+    "unit": "million",
+    "formula": "June subscribers - March subscribers",
+    "scope": "TRAI quarterly performance indicators series"
+  },
+  {
+    "metric": "urban_rural_internet_subscriber_density_gap_jun_2026",
+    "value": 79.96,
+    "unit": "subscriptions_per_100_population",
+    "formula": "Urban subscriptions per 100 - rural subscriptions per 100",
+    "scope": "Density of subscriptions, not unique people"
+  },
+  {
+    "metric": "urban_to_rural_internet_subscriber_density_ratio_jun_2026",
+    "value": 2.63,
+    "unit": "ratio",
+    "formula": "Urban subscriptions per 100 / rural subscriptions per 100",
+    "scope": "Density ratio; not an individual-level access ratio"
+  },
+  {
+    "metric": "rural_share_of_5g_fwa_aug_2026",
+    "value": 51.9,
+    "unit": "percent",
+    "formula": "Rural 5G FWA subscriptions / total 5G FWA subscriptions * 100",
+    "scope": "TRAI monthly subscription series"
+  },
+  {
+    "metric": "jio_share_of_broadband_subscriptions_aug_2026",
+    "value": 48.86,
+    "unit": "percent",
+    "formula": "Jio wired and wireless broadband subscriptions / total broadband subscriptions with M2M * 100",
+    "scope": "Cross-checks the TRAI reported share; denominator includes M2M"
+  }
+]

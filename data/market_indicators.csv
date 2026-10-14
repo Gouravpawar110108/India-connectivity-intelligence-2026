@@ -1,0 +1,30 @@
+metric,value,unit,period,publication_date,source_id,definition_or_scope
+internet_subscribers,1092.79,million,2026-03-31,2026-10-05,S2,TRAI total internet subscribers at period end
+broadband_subscribers,1065.88,million,2026-03-31,2026-10-05,S2,TRAI broadband subscribers at period end
+internet_subscribers_per_100_population,76.59,subscriptions_per_100,2026-03-31,2026-10-05,S2,TRAI subscriptions per 100 population; not unique persons
+rural_internet_subscribers_per_100_population,48.31,subscriptions_per_100,2026-03-31,2026-10-05,S2,TRAI rural subscriptions per 100 population; not unique persons
+wireless_service_arpu,180.73,INR_per_subscriber_month,2025-26_average,2026-10-05,S2,TRAI financial-year average adjusted for interconnect and roaming settlements
+internet_subscribers,1114.17,million,2026-06-30,2026-10-12,S1,TRAI internet subscribers at quarter end
+broadband_subscribers,1087.50,million,2026-06-30,2026-10-12,S1,TRAI broadband subscribers at quarter end
+internet_subscribers_per_100_population,77.94,subscriptions_per_100,2026-06-30,2026-10-12,S1,TRAI subscriptions per 100 population; not unique persons
+urban_internet_subscribers_per_100_population,129.03,subscriptions_per_100,2026-06-30,2026-10-12,S1,TRAI urban subscriptions per 100 population; not unique persons
+rural_internet_subscribers_per_100_population,49.07,subscriptions_per_100,2026-06-30,2026-10-12,S1,TRAI rural subscriptions per 100 population; not unique persons
+wireless_service_arpu,187.12,INR_per_subscriber_month,2026-04-01_to_2026-06-30,2026-10-12,S1,TRAI quarterly wireless-service ARPU per month
+jio_total_customer_base,533.3,million,2026-06-30,2026-07-17,S4,Company-reported total customer base
+jio_net_customer_additions,8.9,million,2026-Q1_FY27,2026-07-17,S4,Company-reported quarterly net customer additions
+jio_true5g_users,285,million,2026-06-30,2026-07-17,S4,Company-reported Jio True5G users
+jio_arpu,215.6,INR_per_subscriber_month,2026-Q1_FY27,2026-07-17,S4,Company-reported average revenue per user
+jio_monthly_churn,1.6,percent_per_month,2026-Q1_FY27,2026-07-17,S4,Company-reported monthly churn; company definition
+jio_fixed_broadband_base,28.6,million,2026-06-30,2026-07-17,S4,Company-reported fixed broadband subscriber base
+jio_airfiber_homes,14.0,million,2026-06-30,2026-07-17,S4,Company-reported JioAirFiber home connections
+broadband_subscribers_with_m2m,1101.21,million,2026-08-31,2026-09-28,S3,TRAI monthly subscription report definition includes M2M cellular mobile connections
+broadband_subscribers_without_m2m,1010.28,million,2026-08-31,2026-09-28,S3,TRAI monthly subscription report definition excludes M2M cellular mobile connections
+fixed_wired_broadband_subscribers,48.63,million,2026-08-31,2026-09-28,S3,TRAI fixed wired access broadband subscriptions
+fixed_wireless_access_broadband_subscribers,19.34,million,2026-08-31,2026-09-28,S3,TRAI FWA broadband subscriptions including 5G FWA and UBR
+mobile_wireless_access_broadband_subscribers,1033.24,million,2026-08-31,2026-09-28,S3,TRAI mobile access broadband subscriptions in monthly subscription series
+fwa_5g_subscribers,13.45,million,2026-08-31,2026-09-28,S3,TRAI 5G fixed wireless access subscriptions
+fwa_5g_subscribers_rural,6.98,million,2026-08-31,2026-09-28,S3,TRAI rural 5G FWA subscriptions
+fwa_5g_subscribers_urban,6.47,million,2026-08-31,2026-09-28,S3,TRAI urban 5G FWA subscriptions
+jio_broadband_subscribers,538.03,million,2026-08-31,2026-09-28,S3,TRAI total wired and wireless broadband subscriber count for Jio; includes mobile broadband
+jio_broadband_market_share,48.86,percent,2026-08-31,2026-09-28,S3,TRAI share of wired and wireless broadband services
+jio_fixed_wired_access_subscribers,14.81,million,2026-08-31,2026-09-28,S3,TRAI fixed wired access broadband subscribers for Jio
