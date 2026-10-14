@@ -1,0 +1,10 @@
+indicator,value,unit,period,source_id,scope
+internet_subscriptions,1114.17,million,2026-06-30,S1,TRAI total internet subscriptions at quarter end
+broadband_subscriptions,1087.50,million,2026-06-30,S1,TRAI broadband subscriptions at quarter end
+urban_internet_subscription_density,129.03,subscriptions_per_100_population,2026-06-30,S1,Not unique-person adoption
+rural_internet_subscription_density,49.07,subscriptions_per_100_population,2026-06-30,S1,Not unique-person adoption
+five_g_fwa_subscriptions,13.45,million,2026-08-31,S3,TRAI 5G fixed-wireless access subscriptions
+rural_five_g_fwa_subscriptions,6.98,million,2026-08-31,S3,TRAI rural 5G fixed-wireless access subscriptions
+jio_customer_base,533.3,million,2026-06-30,S4,Company-reported total customer base
+jio_true5g_users,285,million,2026-06-30,S4,Company-reported True5G users
+jio_airfiber_homes,14.0,million,2026-06-30,S4,Company-reported JioAirFiber home connections

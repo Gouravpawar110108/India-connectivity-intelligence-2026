@@ -22,6 +22,13 @@ The report uses official TRAI, DoT, PIB, and RIL publications. Python calculatio
 
 ## Files
 
+### Quick links
+
+- [report.md](report.md) - concise, shareable report summary
+- [sources.md](sources.md) - official-source list
+- [data/nav-snapshot.csv](data/nav-snapshot.csv) - compact headline-indicator snapshot
+- [report/India_Connectivity_Intelligence_2026.pdf](report/India_Connectivity_Intelligence_2026.pdf) - full publication-ready report
+
 - report/India_Connectivity_Intelligence_2026.pdf - publication-ready report
 - report/India_Connectivity_Intelligence_2026.md - editable report text
 - data/market_indicators.csv - public observations with provenance and scope
