@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Explore official TRAI telecom subscription observations for India, April to July 2026.">
+  <title>India Connectivity Intelligence | Executive Diagnostic</title>
+  <style>
+    :root{--navy:#142b45;--blue:#3275a6;--teal:#148a83;--gold:#d8902f;--ink:#243447;--muted:#63758a;--line:#d5dfe8;--pale:#eef3f7;--paper:#fff;--bg:#f5f8fb}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Segoe UI",Arial,sans-serif}
+    main{max-width:1360px;margin:auto;padding:28px 28px 48px}h1{font-size:clamp(28px,4vw,42px);line-height:1.15;margin:0;color:var(--navy);letter-spacing:-.02em}h2{font-size:18px;margin:0 0 3px;color:var(--navy)}p{margin:0}.sub{color:var(--muted);margin-top:8px}.topline{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:22px}.badge{border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:var(--paper);font-size:12px;color:var(--muted);white-space:nowrap}
+    .filters{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:16px;box-shadow:0 4px 18px #142b4508}.control label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin:0 0 5px}.control select{width:100%;min-height:42px;border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:white;color:var(--ink);font:inherit}.control select:focus{outline:3px solid #3275a633;border-color:var(--blue)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}.card,.panel{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:0 4px 18px #142b4508}.card{padding:17px 18px}.card .label{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}.card .value{font-size:29px;font-weight:750;color:var(--navy);margin-top:4px}.card .note{font-size:12px;color:var(--muted);margin-top:2px}.views{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel{padding:18px;min-width:0}.panel-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:10px}.panel-head p{font-size:12px;color:var(--muted);margin-top:3px}.chart{min-height:310px;overflow:hidden}.chart svg{display:block;width:100%;height:auto;min-height:300px}.notice{background:#fff7e9;border:1px solid #f0dfc2;color:#735019;padding:12px 14px;border-radius:12px;font-size:13px;margin-top:16px}.source{margin-top:16px;padding:18px;background:var(--paper);border:1px solid var(--line);border-radius:16px}.source summary{cursor:pointer;font-weight:700;color:var(--navy)}.source ul{padding-left:20px;color:var(--muted);font-size:13px}.source li{margin:6px 0}.source a{color:var(--blue)}.empty{padding:36px 12px;text-align:center;color:var(--muted)}.foot{font-size:12px;color:var(--muted);margin-top:18px}
+    @media(max-width:900px){.filters{grid-template-columns:1fr 1fr}.views{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.topline{align-items:flex-start;flex-direction:column}}
+    @media(max-width:560px){main{padding:18px 14px 32px}.filters,.cards{grid-template-columns:1fr}.chart svg{min-height:260px}}
+  </style>
+</head>
+<body>
+<main>
+  <header class="topline">
+    <div><h1>India Connectivity Intelligence</h1><p class="sub">TRAI service-area subscriber diagnostic · April–July 2026</p></div>
+    <div class="badge" id="recordBadge">Loading public source records…</div>
+  </header>
+  <section class="filters" aria-label="Dashboard filters">
+    <div class="control"><label for="metric">Measure</label><select id="metric" aria-label="Choose a measure"></select></div>
+    <div class="control"><label for="period">Period</label><select id="period" aria-label="Choose a reporting period"></select></div>
+    <div class="control"><label for="area">Service area</label><select id="area" aria-label="Choose a TRAI service area"></select></div>
+    <div class="control"><label for="provider">Provider</label><select id="provider" aria-label="Choose a provider"></select></div>
+  </section>
+  <section class="cards" aria-label="Selected view summary">
+    <article class="card"><div class="label">Selected subscriptions</div><div id="totalValue" class="value">—</div><div id="totalNote" class="note">Filtered source observations</div></article>
+    <article class="card"><div class="label">Month-over-month change</div><div id="changeValue" class="value">—</div><div id="changeNote" class="note">Comparable consecutive report periods</div></article>
+    <article class="card"><div class="label">Records in selected view</div><div id="countValue" class="value">—</div><div class="note">One observation per measure, period, area, provider and source</div></article>
+  </section>
+  <section class="views">
+    <article class="panel"><div class="panel-head"><div><h2>Four-month trajectory</h2><p id="trendSubtitle">Filter the view to compare reporting periods.</p></div></div><div id="trendChart" class="chart"></div></article>
+    <article class="panel"><div class="panel-head"><div><h2>Service-area comparison</h2><p id="areaSubtitle">Selected reporting period and provider.</p></div></div><div id="areaChart" class="chart"></div></article>
+  </section>
+  <aside class="notice" id="scopeNotice">Subscription counts represent reported connections. They are not unique people. An “All providers” row is a source-reported aggregate and must not be added to the operator rows.</aside>
+  <details class="source"><summary>Sources, definitions and limitations</summary><ul>
+    <li><a href="https://trai.gov.in/sites/default/files/2026-06/PR_No78of2026_0.pdf" target="_blank" rel="noreferrer">TRAI Telecom Subscription Data, May 2026</a> (includes April and May annexure values).</li>
+    <li><a href="https://trai.gov.in/sites/default/files/2026-08/PR_No116of2026_0.pdf" target="_blank" rel="noreferrer">TRAI Telecom Subscription Data, July 2026</a> (includes June and July annexure values).</li>
+    <li>FWA, UBR, and wireline figures are reported subscription stocks by TRAI service area. Blank source cells remain missing; no blank was converted to zero.</li>
+    <li>Provider rows and TRAI-reported totals are retained separately. Filter to one type before summing to avoid double counting.</li>
+    <li>Downloadable facts and dimension tables are in <a href="../data/processed/fact_connectivity.csv">data/processed</a>. Methods and source notes are in <a href="../sources.md">sources.md</a>.</li>
+  </ul></details>
+  <p class="foot">Portfolio analysis · Source cut-off 14 October 2026 · Public regulator data only; no customer-level records.</p>
+</main>
+<script>
+const metricLabels={
+  wireline_subscriber_base:"Wireline subscriber base",
+  fwa_5g_subscriber_base:"5G FWA by provider",
+  fwa_5g_all_provider_total:"5G FWA reported total",
+  fwa_ubr_subscriber_base:"UBR fixed-wireless base",
+  broadband_segment_subscriptions:"Broadband by access segment",
+  broadband_top_provider_base:"Top-five broadband provider base"
+};
+const metricNotes={
+  wireline_subscriber_base:"TRAI area-by-provider wireline counts; use the All providers row for area totals.",
+  fwa_5g_subscriber_base:"TRAI 5G FWA area counts by Bharti Airtel and Reliance Jio.",
+  fwa_5g_all_provider_total:"TRAI-published 5G FWA area total; excludes separate provider summation in this view.",
+  fwa_ubr_subscriber_base:"TRAI UBR fixed-wireless figures; Jio is the only provider reporting this series.",
+  broadband_segment_subscriptions:"TRAI broadband totals by access segment, in millions; categories have different scopes.",
+  broadband_top_provider_base:"TRAI-listed top-five provider counts; this is a ranking table, not a complete market census."
+};
+let rows=[];
+const $=id=>document.getElementById(id);
+const fmt=(n,unit)=>{
+  if(unit==="percent") return `${n.toFixed(2)}%`;
+  const value=unit==="million_subscriptions"?n:n/1e6;
+  return `${value.toLocaleString("en-IN",{maximumFractionDigits:2})}M`;
+};
+const labelDate=d=>new Date(`${d}T00:00:00`).toLocaleDateString("en-IN",{month:"short",year:"numeric"});
+const unique=a=>[...new Set(a)].sort();
+function setOptions(node,values,allLabel){node.innerHTML="";for(const v of values){const o=document.createElement("option");o.value=v;o.textContent=v==="__ALL__"?allLabel:v;node.append(o)}}
+function metricRows(){return rows.filter(r=>r.metric_id===$("metric").value)}
+function populateDependent(){
+  const d=metricRows();
+  const dates=unique(d.map(r=>r.period_end));
+  setOptions($("period"),["__LATEST__",...dates],"Latest available");
+  [...$("period").options].forEach(o=>{if(o.value!=="__LATEST__")o.textContent=labelDate(o.value)});
+  setOptions($("area"),["__ALL__",...unique(d.filter(r=>r.geography!=="India").map(r=>r.geography))],"All service areas");
+  setOptions($("provider"),["__ALL__",...unique(d.map(r=>r.provider))],"All reported providers");
+  $("provider").value=d.some(r=>r.provider==="All providers")?"All providers":(unique(d.map(r=>r.provider))[0]||"__ALL__");
+  draw();
+}
+function selected(){
+  let d=metricRows();
+  const period=$("period").value;
+  const latest=unique(d.map(r=>r.period_end)).sort().at(-1);
+  const chosenPeriod=period==="__LATEST__"?latest:period;
+  const area=$("area").value, provider=$("provider").value;
+  if(area!=="__ALL__") d=d.filter(r=>r.geography===area);
+  // When the user asks for all providers, prefer TRAI's published aggregate
+  // if this metric has one; otherwise use the available provider detail rows.
+  // This prevents adding source totals to the provider components.
+  if(provider!=="__ALL__") d=d.filter(r=>r.provider===provider);
+  else if(d.some(r=>r.provider==="All providers")) d=d.filter(r=>r.provider==="All providers");
+  const thisPeriod=d.filter(r=>r.period_end===chosenPeriod);
+  return {d,thisPeriod,chosenPeriod,latest,area,provider};
+}
+function svgBars(data,mode){
+  if(!data.length)return '<div class="empty">No observations are available for these filters.</div>';
+  const width=650,height=310,left=mode==="trend"?56:160,right=625,top=18,bottom=260;
+  const max=Math.max(...data.map(x=>x.value),1);const color=mode==="trend"?"#148a83":"#3275a6";
+  const slot=(bottom-top)/data.length;
+  let svg=`<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${mode==="trend"?"Subscription trend chart":"Service area comparison chart"}">`;
+  for(let i=0;i<4;i++){const y=top+i*(bottom-top)/3;svg+=`<line x1="${left}" y1="${y}" x2="${right}" y2="${y}" stroke="#e5ebf0"/>`}
+  data.forEach((item,i)=>{
+    const y=top+i*slot+slot*.2;const bh=Math.max(9,slot*.58);const barW=(right-left-6)*item.value/max;
+    const text=mode==="trend"?item.label:item.label.length>22?item.label.slice(0,20)+"…":item.label;
+    svg+=`<text x="${left-9}" y="${y+bh*.72}" text-anchor="end" font-size="12" fill="#243447">${escapeXml(text)}</text>`;
+    svg+=`<rect x="${left}" y="${y}" width="${barW}" height="${bh}" rx="5" fill="${color}"/>`;
+    svg+=`<text x="${Math.min(right-2,left+barW+7)}" y="${y+bh*.72}" font-size="11" fill="#243447">${escapeXml(fmt(item.value,item.unit))}</text>`;
+  });
+  svg+="</svg>";return svg;
+}
+function draw(){
+  const {d,thisPeriod,chosenPeriod,latest,area,provider}=selected();
+  const unit=d[0]?.unit||"subscriptions";
+  const metric=$("metric").value;
+  const aggregate=items=>items.reduce((a,r)=>a+Number(r.value),0);
+  const sum=aggregate(thisPeriod);
+  $("totalValue").textContent=thisPeriod.length?fmt(sum,unit):"—";
+  $("totalNote").textContent=thisPeriod.length?`${metricLabels[metric]} · ${labelDate(chosenPeriod)}`:"No matching records";
+  $("countValue").textContent=thisPeriod.length.toLocaleString("en-IN");
+  const dates=unique(d.map(r=>r.period_end)).sort();
+  const pos=dates.indexOf(chosenPeriod), prior=pos>0?dates[pos-1]:null;
+  let change="—", changeNote="No prior comparable report period";
+  if(prior){const a=aggregate(d.filter(r=>r.period_end===prior)),b=aggregate(d.filter(r=>r.period_end===chosenPeriod));if(a!==0){change=`${((b-a)/a*100).toFixed(2)}%`;changeNote=`${fmt(a,unit)} → ${fmt(b,unit)} · ${labelDate(prior)} to ${labelDate(chosenPeriod)}`}}
+  $("changeValue").textContent=change;$("changeNote").textContent=changeNote;
+  $("trendSubtitle").textContent=`${metricNotes[metric]||"Source-reported metric."} · ${area==="__ALL__"?"All available areas":area} · ${provider==="__ALL__"?"All selected provider records":provider}`;
+  $("areaSubtitle").textContent=`Top service areas · ${labelDate(chosenPeriod)} · ${provider==="__ALL__"?"selected provider set":provider}`;
+  const periodData=dates.map(date=>({label:labelDate(date),period_end:date,value:aggregate(d.filter(r=>r.period_end===date)),unit}));
+  const byArea=new Map();for(const r of thisPeriod){if(r.geography==="India")continue;byArea.set(r.geography,(byArea.get(r.geography)||0)+Number(r.value))}
+  const areaData=[...byArea.entries()].map(([label,value])=>({label,value,unit})).sort((a,b)=>b.value-a.value).slice(0,10);
+  $("trendChart").innerHTML=svgBars(periodData,"trend");
+  $("areaChart").innerHTML=areaData.length?svgBars(areaData,"area"):'<div class="empty">This measure is reported at India level only.</div>';
+  const sources=unique(d.map(r=>r.source_id));
+  $("scopeNotice").textContent=`${metricNotes[metric]||"TRAI-reported observation."} Source series: ${sources.join(", ")}. The dashboard does not represent unique people or customer-level outcomes. All providers is a reported aggregate; do not add it to provider detail.`;
+}
+function escapeXml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&apos;"}[c]))}
+fetch("../data/processed/dashboard_data.json").then(r=>{if(!r.ok)throw new Error("Data file did not load");return r.json()}).then(data=>{
+  rows=data;
+  const metrics=unique(rows.map(r=>r.metric_id)).filter(m=>metricLabels[m]);
+  setOptions($("metric"),metrics.map(m=>m),"");
+  [...$("metric").options].forEach(o=>o.textContent=metricLabels[o.value]);
+  $("metric").value=metrics.includes("fwa_5g_all_provider_total")?"fwa_5g_all_provider_total":metrics[0];
+  $("recordBadge").textContent=`${rows.length.toLocaleString("en-IN")} public observations · 4 periods`;
+  populateDependent();
+}).catch(()=>{
+  $("recordBadge").textContent="Data file unavailable";
+  $("trendChart").innerHTML='<div class="empty">Open through a web server or GitHub Pages so the source data file can load.</div>';
+});
+$("metric").addEventListener("change",populateDependent);
+for(const id of ["period","area","provider"])$(id).addEventListener("change",draw);
+</script>
+</body>
+</html>

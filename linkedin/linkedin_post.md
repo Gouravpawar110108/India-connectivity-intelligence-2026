@@ -1,20 +1,17 @@
 # LinkedIn post draft
 
-I have completed the public-source edition of my portfolio project, India Connectivity Intelligence 2026, on how India's connectivity market is changing and where fixed wireless and satellite services may fit.
+I’m sharing an update to my portfolio project: **India Connectivity Intelligence 2026**.
 
-Three evidence-based takeaways:
+I used official TRAI monthly subscription reports to build a small, source-traceable data pipeline and an interactive dashboard covering April–July 2026. The repository includes the extracted data, a 1,000-row sample, cleaned fact and dimension tables, SQLite cleaning and KPI queries, a star-schema diagram, and a dashboard walkthrough.
 
-- From March to June 2026, TRAI's quarterly series recorded internet subscriptions rising by 21.38 million (1.96%) and broadband subscriptions rising by 21.62 million (2.03%).
-- In June 2026, TRAI reported 129.03 urban and 49.07 rural internet subscriptions per 100 population. These are subscription-density measures, not counts of unique people.
-- For Q1 FY2026-27, Reliance Industries reported Jio at 533.3 million customers, about 285 million True5G users, a 28.6 million fixed-broadband base, and 14.0 million JioAirFiber home connections.
+One finding: reported 5G fixed wireless access subscriptions increased from **12.55 million in April to 13.21 million in July 2026**, a calculated **5.24%** increase. In July, Andhra Pradesh had the largest service-area total, followed by Uttar Pradesh (East), Maharashtra, Bihar and Tamil Nadu.
 
-The project compares these public market indicators with Jio's company-reported operating metrics and the official milestones reported for Starlink's India authorisations. It treats satellite broadband as a conditional use-case hypothesis: the government authorisation does not establish current retail availability or pricing, and Starlink's dynamic availability map could not be read reliably in this review.
+These are subscription counts, not unique people. The analysis is descriptive and does not claim service quality, customer satisfaction, churn or future demand. I kept TRAI-published aggregate totals separate from provider rows to avoid double-counting.
 
-I used official TRAI, Department of Telecommunications, PIB, and Reliance Industries sources, and calculated the market comparisons in Python. I have not collected customer survey responses or claimed customer satisfaction, willingness-to-pay, churn prediction, or customer lifetime value results.
+I also included the source PDFs and page-level references so the calculations can be reviewed and reproduced. The repository has an interactive HTML dashboard and Power BI/Tableau-ready CSVs; a native PBIX workbook is not included in this version.
 
-The report, source register, market data, and reproducible calculations are available here:
-[Paste the GitHub repository URL after publishing]
+Project and files: https://github.com/Gouravpawar110108/India-connectivity-intelligence-2026
 
-I am a BBA-BIA student at LNCT Bhopal, and this project is part of my business analytics portfolio.
+Feedback on the data model, SQL KPIs or dashboard is welcome.
 
-#Telecom #BusinessAnalytics #CustomerAnalytics #India #DataAnalytics
+#DataAnalytics #PowerBI #Telecom #India #BusinessAnalytics #DataVisualization

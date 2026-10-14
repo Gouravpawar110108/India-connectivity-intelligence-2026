@@ -1,24 +1,22 @@
-# Power BI dashboard plan
+# Interactive connectivity dashboard
 
-No Power BI dashboard file is included in this release. The figures and definitions here are a dashboard specification, not a claim that a .pbix has been built.
+`index.html` is a working, static browser dashboard backed by `../data/processed/dashboard_data.json`. It includes filters for measure, reporting period, TRAI service area and provider, with subscription summaries, month-over-month comparisons, four-period trends and service-area rankings.
 
-## Recommended pages
+## Run locally
 
-1. Market overview: March-June 2026 internet and broadband counts, growth, wireless ARPU, and reporting dates.
-2. Connectivity opportunity: urban/rural internet subscription density and the August 2026 5G FWA split.
-3. Jio operating position: company-reported Q1 FY27 customer base, 5G users, ARPU, churn, fixed broadband, and AirFiber.
-4. Regulation and service readiness: documented Starlink authorisation milestones and the unverified commercial-availability items.
-5. Evidence and definitions: source register, metric definitions, dates, and limits.
+From the repository root, start a local web server:
 
-## Modeling rules
+```powershell
+python -m http.server 8000
+```
 
-- Keep TRAI observations, RIL company-reported KPIs, policy targets, and calculated measures in separate tables or clearly separated categories.
-- Preserve source_id, publication date, observation period, unit, and scope note for every record.
-- Do not blend the August monthly broadband series (which reports with/without M2M) into the March-June quarterly performance series without reconciling definitions.
-- Do not use subscriber density per 100 population as unique-person adoption.
-- Do not present Jio's total broadband subscriber count as fixed-home broadband; the TRAI provider count includes mobile broadband.
-- No survey responses or synthetic customer records are supplied. Customer segmentation, satisfaction, willingness-to-pay, and customer-level churn pages should remain out of the report until appropriate data exists.
+Open `http://localhost:8000/dashboard/`. The JSON file is fetched by the page, so opening `index.html` directly from disk may show a data-loading message. GitHub Pages also works as a static host.
 
-## Suggested interactions
+## Definitions and safeguards
 
-Use a period selector for quarterly market measures, a source-type selector for regulator versus company measures, and an August 2026 provider view. Include source notes in tooltips and page footers. Never imply that filters change source definitions.
+- The current monthly series covers April–July 2026 and is extracted from the two linked TRAI reports listed on the page and in [../sources.md](../sources.md).
+- Provider details and source-reported aggregate totals are distinct series. Where an aggregate exists, “All providers” uses the published total and does not add operator rows to it.
+- Counts are reported subscriptions/connections, not unique individuals.
+- The charts are descriptive and do not imply service quality, causality, customer preference or forecast.
+
+`../visuals/dashboard_walkthrough.gif` is a ten-second visual sequence illustrating different filter states using the source-backed dashboard values. It is a walkthrough animation, not a screen recording of live user input. This repository does not contain a native Power BI `.pbix` or Tableau workbook; the processed CSVs are ready to import into either tool.

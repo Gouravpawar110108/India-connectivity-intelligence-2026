@@ -1,63 +1,72 @@
 # India Connectivity Intelligence 2026
 
-An evidence-led portfolio report on India's connectivity market, Jio's published operating position, and the conditions under which satellite internet could complement terrestrial networks.
+An evidence-led view of India's connectivity market, regional fixed-wireless access (FWA), wireline infrastructure and operator-reported indicators. This repository combines regulator source documents, a traceable data extract, SQL examples, an interactive browser dashboard and an executive report.
 
-This is the public-source edition of the project, with an evidence cut-off of 14 October 2026. It includes a report, official source register, regulator/company observations, and reproducible market calculations.
+**Evidence cut-off:** 14 October 2026.<br>
+**Current monthly dashboard series:** April–July 2026.
+**Primary sources:** Telecom Regulatory Authority of India (TRAI), Department of Telecommunications, Press Information Bureau and Reliance Industries Limited. See [sources.md](sources.md).
 
-## Key findings
+## Executive takeaways
 
-- In TRAI's quarterly performance series, internet subscriptions increased from 1,092.79 million at March 2026 to 1,114.17 million at June 2026, a calculated 1.96% rise. Broadband subscriptions increased from 1,065.88 million to 1,087.50 million, a calculated 2.03% rise. [S1, S2]
-- TRAI reported 129.03 urban and 49.07 rural internet subscriptions per 100 population at June 2026. These are subscription-density measures and can include multiple subscriptions per person; they are not unique-person adoption rates. [S1]
-- Reliance Industries reported Jio's Q1 FY2026-27 customer base at 533.3 million, with about 285 million True5G users, 28.6 million fixed-broadband connections, and 14.0 million JioAirFiber home connections. [S4]
-- In the TRAI August 2026 subscription series, 5G fixed wireless access subscriptions totalled 13.45 million, including 6.98 million rural subscriptions. The same report's 538.03 million Jio broadband total includes mobile broadband and is not a home-broadband count. [S3]
-- Government-reported authorisations and satellite-capacity approvals establish regulatory milestones for Starlink, but do not establish current consumer availability, price, commercial uptake, or market share. [S6, S7]
+- TRAI's published regional 5G FWA totals increased from **12.55 million in April** to **13.21 million in July 2026**, a calculated **5.24%** increase across the four-month window. This is growth in reported subscriptions, not unique people.
+- In July, the largest reported regional 5G FWA totals were **Andhra Pradesh (1.12m), Uttar Pradesh (East) (1.05m), Maharashtra (1.02m), Bihar (1.00m) and Tamil Nadu (0.87m)**.
+- TRAI's monthly annexures show wireline totals of **48.58m in April** and **48.01m in July**. The monthly series is not monotonic; use the filters and source notes to inspect each month rather than treating the endpoints as a trend forecast.
+- FWA and wireline figures describe subscriptions/connections. Subscription density and company-reported customer counts elsewhere in the report use different definitions and must not be merged as if they share a common denominator.
 
-## Business question
+These are descriptive findings from published regulator tables. They do not establish consumer preference, service quality, profitability, causal impact or future demand.
 
-How can Jio strengthen customer growth and retention while satellite internet creates potential new connectivity options for underserved areas of India?
+## Explore the project
 
-## Method
+| Folder or file | What it contains |
+| --- | --- |
+| [dashboard/](dashboard/) | Interactive HTML dashboard with measure, month, service-area and provider filters. Open through GitHub Pages or a local web server. |
+| [report.md](report.md) | Executive diagnostic and business interpretation. |
+| [report/India_Connectivity_Intelligence_2026.pdf](report/India_Connectivity_Intelligence_2026.pdf) | Designed PDF report from the broader public-source research edition. |
+| [data/raw/](data/raw/) | Official TRAI PDF releases, extracted source observations and deterministic 1,000-row sample. |
+| [data/processed/](data/processed/) | Cleaned fact table, dimensional CSVs and dashboard JSON payload. |
+| [sql/](sql/) | SQLite staging/cleaning, star-schema DDL and business KPI queries. |
+| [visuals/data_model_erd.png](visuals/data_model_erd.png) | Star-schema relationship diagram. |
+| [visuals/dashboard_walkthrough.gif](visuals/dashboard_walkthrough.gif) | 10-second sequence illustrating different dashboard filter states. |
+| [linkedin/linkedin_post.md](linkedin/linkedin_post.md) | Copy-ready LinkedIn post draft. |
 
-The report uses official TRAI, DoT, PIB, and RIL publications. Python calculations use explicit source values and formulas. Regulator indicators, company-reported measures, policy targets, and derived metrics remain labelled separately.
+## Data and method
 
-## Files
+The monthly extract was built from two official TRAI reports. The May release supplies April and May annexure values; the July release supplies June and July values. The parser records source release, source page, period, metric, geography, provider, unit and scope note for each observation. `data/raw/trai_monthly_extracted_observations.csv` preserves extracted rows; `data/processed/fact_connectivity.csv` is the cleaned analytical fact table. The sample contains 1,000 records selected reproducibly with seed `2026`.
 
-### Quick links
+The dimensional model separates period, geography, provider, metric and source. The SQLite SQL files demonstrate one implementation path. Source-reported aggregates are retained as aggregate rows alongside provider detail. **Never add a `provider = All providers` total to its underlying operator rows.** Missing cells remain missing; they are not changed to zero.
 
-- [report.md](report.md) - concise, shareable report summary
-- [sources.md](sources.md) - official-source list
-- [data/nav-snapshot.csv](data/nav-snapshot.csv) - compact headline-indicator snapshot
-- [report/India_Connectivity_Intelligence_2026.pdf](report/India_Connectivity_Intelligence_2026.pdf) - full publication-ready report
+### Main calculated KPI
 
-- report/India_Connectivity_Intelligence_2026.pdf - publication-ready report
-- report/India_Connectivity_Intelligence_2026.md - editable report text
-- data/market_indicators.csv - public observations with provenance and scope
-- analysis/market_analysis.py - reproducible calculations
-- analysis/derived_metrics.csv - calculated output
-- analysis/sql_queries.sql - example KPI queries
-- references/sources.md - source register
-- linkedin/linkedin_post.md - LinkedIn copy with a repository-link placeholder
-- dashboard/README.md - suggested Power BI structure and definition rules
-- PROJECT_LOG.md - completed work and open items
-- PUBLISHING.md - exact GitHub and LinkedIn posting steps
+`(July 2026 5G FWA total − April 2026 5G FWA total) / April 2026 total × 100 = 5.24%`.
 
-## Evidence limitations
+Regional values are summed from TRAI's published `All providers` service-area totals. The sum reconciles to the national total in the source release for each month. Rebuild the extract and dimensional CSVs with:
 
-This release contains no customer survey, customer-level data, synthetic customer records, or third-party market estimates. It therefore does not claim measured customer satisfaction, willingness to pay, customer segments, churn prediction, or customer lifetime value. It also does not include a Power BI .pbix dashboard, a GitHub push, or a LinkedIn publication.
+```powershell
+python -m pip install -r requirements.txt
+python analysis/prepare_public_dataset.py
+```
 
-TRAI and company measures may use different populations, definitions, and reporting periods. In particular, do not combine the quarterly performance series with the August monthly subscription series without reconciling definitions. See the source register and report for details.
+## Open the dashboard
 
-## Reproduce the calculations
+The dashboard loads a JSON file, so use a local static web server from the repository root instead of opening the HTML as a `file://` URL:
 
-Use Python 3.10+ with the packages in requirements.txt.
+```powershell
+python -m http.server 8000
+```
 
-    python -m pip install -r requirements.txt
-    python analysis/market_analysis.py
+Then visit `http://localhost:8000/dashboard/`. GitHub Pages can also host the repository as a static site.
 
-To build the PDF:
+## Power BI / Tableau workbook
 
-    python report/build_report.py
+This release includes an interactive, source-backed HTML dashboard plus Power BI/Tableau-ready fact and dimension CSVs. It does **not** include an `.pbix` or Tableau workbook: a native authoring application/integration was not available in this workspace, and no blank or simulated workbook is presented as a finished dashboard. Import `fact_connectivity.csv` and the dimension CSVs into Power BI or Tableau and use [visuals/data_model_erd.png](visuals/data_model_erd.png) as the relationship guide.
 
-## Publishing
+## Caveats
 
-The folder is structured for a GitHub repository. See PUBLISHING.md for the exact GitHub push steps and LinkedIn PDF-document posting steps. No external account was written to during this task.
+- TRAI service-area subscription counts are connection stocks, not unique individuals.
+- Provider detail coverage varies by metric; top-five provider ranking tables are not a full-market census.
+- UBR is reported only for the provider named in the source.
+- Monthly tables and quarterly performance indicators may have different scope and definitions. Do not combine them without reconciling the measure.
+- Satellite authorisations or policy milestones do not prove retail availability, pricing, uptake or market share.
+- No customer-level data, survey responses, satisfaction measures, churn model or causal analysis is included.
+
+See [sources.md](sources.md) and [report.md](report.md) for provenance and interpretation. The project is analytical research, not investment advice.
