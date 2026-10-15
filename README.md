@@ -19,7 +19,7 @@ These are descriptive findings from published regulator tables. They do not esta
 
 | Folder or file | What it contains |
 | --- | --- |
-| [dashboard/](dashboard/) | Interactive HTML dashboard with measure, month, service-area and provider filters. Open through GitHub Pages or a local web server. |
+| [dashboard/](dashboard/) | Portfolio-ready interactive HTML dashboard with four approved KPI cards, measure/month/area/provider filters, source-row detail and CSV download. Open through GitHub Pages or a local web server. |
 | [report.md](report.md) | Executive diagnostic and business interpretation. |
 | [report/India_Connectivity_Intelligence_2026.pdf](report/India_Connectivity_Intelligence_2026.pdf) | Designed PDF report from the broader public-source research edition. |
 | [Power BI model draft](report/powerbi/India%20Connectivity%20Intelligence%202026/README.md) | Draft semantic model, source contract, Power Query starting point and KPI definitions for review. |
@@ -55,7 +55,7 @@ The dashboard loads a JSON file, so use a local static web server from the repos
 python -m http.server 8000
 ```
 
-Then visit `http://localhost:8000/dashboard/`. GitHub Pages can also host the repository as a static site.
+Then visit `http://localhost:8000/dashboard/`. The dashboard opens on the July 2026 portfolio snapshot and includes a source-backed monthly comparison, top service-area bars, selectable measures and a filtered observation table with CSV download. GitHub Pages can also host the repository as a static site.
 
 ## Power BI / Tableau workbook
 
