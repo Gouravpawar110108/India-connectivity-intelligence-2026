@@ -1,0 +1,89 @@
+[
+  {
+    "name": "fact_connectivity",
+    "connectorKind": "File",
+    "connection": "data/processed/fact_connectivity.csv",
+    "mode": "Import",
+    "columns": [
+      "observation_id",
+      "metric_id",
+      "period_end",
+      "geography",
+      "provider",
+      "value",
+      "unit",
+      "source_id",
+      "source_file",
+      "source_page",
+      "source_url",
+      "scope_note"
+    ],
+    "status": "LocallyProfiled",
+    "credentialPolicy": "Configure credentials only in Power BI Desktop or an approved gateway; never store secrets in this draft."
+  },
+  {
+    "name": "dim_period",
+    "connectorKind": "File",
+    "connection": "data/processed/dim_period.csv",
+    "mode": "Import",
+    "columns": [
+      "period_key",
+      "period_end"
+    ],
+    "status": "LocallyProfiled",
+    "credentialPolicy": "Configure credentials only in Power BI Desktop or an approved gateway; never store secrets in this draft."
+  },
+  {
+    "name": "dim_geography",
+    "connectorKind": "File",
+    "connection": "data/processed/dim_geography.csv",
+    "mode": "Import",
+    "columns": [
+      "geography_key",
+      "geography",
+      "geography_type"
+    ],
+    "status": "LocallyProfiled",
+    "credentialPolicy": "Configure credentials only in Power BI Desktop or an approved gateway; never store secrets in this draft."
+  },
+  {
+    "name": "dim_provider",
+    "connectorKind": "File",
+    "connection": "data/processed/dim_provider.csv",
+    "mode": "Import",
+    "columns": [
+      "provider_key",
+      "provider"
+    ],
+    "status": "LocallyProfiled",
+    "credentialPolicy": "Configure credentials only in Power BI Desktop or an approved gateway; never store secrets in this draft."
+  },
+  {
+    "name": "dim_metric",
+    "connectorKind": "File",
+    "connection": "data/processed/dim_metric.csv",
+    "mode": "Import",
+    "columns": [
+      "metric_key",
+      "metric_id",
+      "metric_name",
+      "default_unit"
+    ],
+    "status": "LocallyProfiled",
+    "credentialPolicy": "Configure credentials only in Power BI Desktop or an approved gateway; never store secrets in this draft."
+  },
+  {
+    "name": "dim_source",
+    "connectorKind": "File",
+    "connection": "data/processed/dim_source.csv",
+    "mode": "Import",
+    "columns": [
+      "source_key",
+      "source_id",
+      "source_file",
+      "source_url"
+    ],
+    "status": "LocallyProfiled",
+    "credentialPolicy": "Configure credentials only in Power BI Desktop or an approved gateway; never store secrets in this draft."
+  }
+]

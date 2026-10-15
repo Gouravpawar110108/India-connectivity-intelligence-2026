@@ -1,0 +1,26 @@
+{
+  "schema": "codex.powerbi.dataContractDraft.v1",
+  "sources": [
+    "fact_connectivity",
+    "dim_period",
+    "dim_geography",
+    "dim_provider",
+    "dim_metric",
+    "dim_source"
+  ],
+  "facts": [
+    "FactConnectivity"
+  ],
+  "dimensions": [
+    "DimPeriod",
+    "DimGeography",
+    "DimProvider",
+    "DimMetric",
+    "DimSource"
+  ],
+  "rules": [
+    "Keys must be non-null and unique in dimensions.",
+    "Fact tables must reference dimensions through defined keys.",
+    "Every KPI must declare owner, grain, format, and refresh expectation."
+  ]
+}

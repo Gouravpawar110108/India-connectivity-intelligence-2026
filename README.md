@@ -22,6 +22,7 @@ These are descriptive findings from published regulator tables. They do not esta
 | [dashboard/](dashboard/) | Interactive HTML dashboard with measure, month, service-area and provider filters. Open through GitHub Pages or a local web server. |
 | [report.md](report.md) | Executive diagnostic and business interpretation. |
 | [report/India_Connectivity_Intelligence_2026.pdf](report/India_Connectivity_Intelligence_2026.pdf) | Designed PDF report from the broader public-source research edition. |
+| [Power BI model draft](report/powerbi/India%20Connectivity%20Intelligence%202026/README.md) | Draft semantic model, source contract, Power Query starting point and KPI definitions for review. |
 | [data/raw/](data/raw/) | Official TRAI PDF releases, extracted source observations and deterministic 1,000-row sample. |
 | [data/processed/](data/processed/) | Cleaned fact table, dimensional CSVs and dashboard JSON payload. |
 | [sql/](sql/) | SQLite staging/cleaning, star-schema DDL and business KPI queries. |
@@ -58,7 +59,7 @@ Then visit `http://localhost:8000/dashboard/`. GitHub Pages can also host the re
 
 ## Power BI / Tableau workbook
 
-This release includes an interactive, source-backed HTML dashboard plus Power BI/Tableau-ready fact and dimension CSVs. It does **not** include an `.pbix` or Tableau workbook: a native authoring application/integration was not available in this workspace, and no blank or simulated workbook is presented as a finished dashboard. Import `fact_connectivity.csv` and the dimension CSVs into Power BI or Tableau and use [visuals/data_model_erd.png](visuals/data_model_erd.png) as the relationship guide.
+This release includes an interactive, source-backed HTML dashboard, Power BI/Tableau-ready CSVs, and a Power BI model design draft with proposed relationships and DAX measures. It does **not** include a native `.pbix` or Tableau workbook. The connected Power BI model wizard produces reviewable drafts; a person must create and save a new PBIP in Power BI Desktop before these drafts can be applied and validated. Review the proposed definitions and ownership notes in the [Power BI model draft](report/powerbi/India%20Connectivity%20Intelligence%202026/README.md). Use [visuals/data_model_erd.png](visuals/data_model_erd.png) as the relationship guide.
 
 ## Caveats
 

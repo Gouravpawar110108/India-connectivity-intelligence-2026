@@ -1,0 +1,135 @@
+{
+  "schema": "codex.powerbi.modelWizard.v1",
+  "projectName": "India Connectivity Intelligence 2026",
+  "businessPurpose": "Explore official TRAI service-area subscription trends for 5G fixed wireless and wireline connectivity in India from April through July 2026, with source provenance and no double counting of provider totals.",
+  "evidenceMaturity": "Draft",
+  "architecture": {
+    "pattern": "StarSchema",
+    "factTables": [
+      "FactConnectivity"
+    ],
+    "dimensionTables": [
+      "DimPeriod",
+      "DimGeography",
+      "DimProvider",
+      "DimMetric",
+      "DimSource"
+    ],
+    "sourceNames": [
+      "fact_connectivity",
+      "dim_period",
+      "dim_geography",
+      "dim_provider",
+      "dim_metric",
+      "dim_source"
+    ],
+    "sourceProfiles": [
+      {
+        "name": "fact_connectivity",
+        "path": "data/processed/fact_connectivity.csv",
+        "extension": ".csv",
+        "columns": [
+          "observation_id",
+          "metric_id",
+          "period_end",
+          "geography",
+          "provider",
+          "value",
+          "unit",
+          "source_id",
+          "source_file",
+          "source_page",
+          "source_url",
+          "scope_note"
+        ]
+      },
+      {
+        "name": "dim_period",
+        "path": "data/processed/dim_period.csv",
+        "extension": ".csv",
+        "columns": [
+          "period_key",
+          "period_end"
+        ]
+      },
+      {
+        "name": "dim_geography",
+        "path": "data/processed/dim_geography.csv",
+        "extension": ".csv",
+        "columns": [
+          "geography_key",
+          "geography",
+          "geography_type"
+        ]
+      },
+      {
+        "name": "dim_provider",
+        "path": "data/processed/dim_provider.csv",
+        "extension": ".csv",
+        "columns": [
+          "provider_key",
+          "provider"
+        ]
+      },
+      {
+        "name": "dim_metric",
+        "path": "data/processed/dim_metric.csv",
+        "extension": ".csv",
+        "columns": [
+          "metric_key",
+          "metric_id",
+          "metric_name",
+          "default_unit"
+        ]
+      },
+      {
+        "name": "dim_source",
+        "path": "data/processed/dim_source.csv",
+        "extension": ".csv",
+        "columns": [
+          "source_key",
+          "source_id",
+          "source_file",
+          "source_url"
+        ]
+      }
+    ],
+    "connectorSupport": "Any connector available in the user's installed Power BI Desktop Get Data experience can be declared by connectorKind."
+  },
+  "semanticPlan": {
+    "measures": [
+      "5G FWA Subscriptions",
+      "5G FWA Month-over-Month Growth %",
+      "Wireline Subscribers",
+      "TRAI Observation Count"
+    ],
+    "requiredPolicies": [
+      "Assign KPI owner",
+      "Add measure descriptions",
+      "Define RLS roles",
+      "Define freshness SLO",
+      "Add semantic tests"
+    ]
+  },
+  "reportPlan": {
+    "pages": [
+      "Executive Overview",
+      "Trend and Drivers",
+      "Detail Explorer",
+      "Data Quality"
+    ],
+    "firstPageKpis": [
+      "5G FWA Subscriptions",
+      "5G FWA Month-over-Month Growth %",
+      "Wireline Subscribers",
+      "TRAI Observation Count"
+    ]
+  },
+  "safeNextSteps": [
+    "Create a new PBIP project in Power BI Desktop.",
+    "Copy reviewed model and report drafts into the PBIP project.",
+    "Configure credentials only in Power BI Desktop or an approved gateway.",
+    "Run semantic tests and open the project in Power BI Desktop before publishing."
+  ],
+  "binaryBoundary": "The wizard does not create or modify PBIX/PBIT binaries and does not publish to Power BI or Fabric."
+}

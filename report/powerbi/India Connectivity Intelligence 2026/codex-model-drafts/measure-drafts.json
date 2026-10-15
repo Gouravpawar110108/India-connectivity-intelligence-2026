@@ -1,0 +1,30 @@
+[
+  {
+    "measureName": "5G FWA Subscriptions",
+    "tableName": "FactConnectivity",
+    "expression": "CALCULATE(SUM(FactConnectivity[value]), FactConnectivity[metric_id] = \"fwa_5g_all_provider_total\", FactConnectivity[provider] = \"All providers\")",
+    "owner": "Unassigned - project owner to confirm",
+    "description": "TRAI-reported 5G FWA subscriptions. Uses source-published All providers regional totals and respects geography and period filters."
+  },
+  {
+    "measureName": "5G FWA Month-over-Month Growth %",
+    "tableName": "FactConnectivity",
+    "expression": "VAR CurrentPeriod = MAX(DimPeriod[period_end]) VAR CurrentValue = [5G FWA Subscriptions] VAR PriorPeriod = EOMONTH(CurrentPeriod, -1) VAR PriorValue = CALCULATE([5G FWA Subscriptions], REMOVEFILTERS(DimPeriod), DimPeriod[period_end] = PriorPeriod) RETURN DIVIDE(CurrentValue - PriorValue, PriorValue)",
+    "owner": "Unassigned - project owner to confirm",
+    "description": "Percent change in the selected month-end reported 5G FWA subscription total versus the immediately prior calendar month. First available month is blank."
+  },
+  {
+    "measureName": "Wireline Subscribers",
+    "tableName": "FactConnectivity",
+    "expression": "CALCULATE(SUM(FactConnectivity[value]), FactConnectivity[metric_id] = \"wireline_subscriber_base\", FactConnectivity[provider] = \"All providers\")",
+    "owner": "Unassigned - project owner to confirm",
+    "description": "TRAI-reported wireline subscriber stock. Uses the All providers regional totals and respects geography and period filters."
+  },
+  {
+    "measureName": "TRAI Observation Count",
+    "tableName": "FactConnectivity",
+    "expression": "COUNTROWS(FactConnectivity)",
+    "owner": "Unassigned - project owner to confirm",
+    "description": "Number of source observations in the current filter context; not a subscriber KPI."
+  }
+]
